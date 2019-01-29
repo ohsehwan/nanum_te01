@@ -16,7 +16,24 @@ def gnb_menus(request):
     menus = [
         {
             'name': '홈', 'url': '/admin/',
-        },
+        },    
+
+        {
+            'name': '공통설정',
+            'sub_menus': [
+                {'name': '공통코드(대)', 'url': '/admin/service00/com_cdh/'},
+                {'name': '공통코드(하위)', 'url': '/admin/service00/com_cdd'},
+             
+            ]
+        },          
+        {
+            'name': '멘토스쿨',
+            'sub_menus': [
+                {'name': '멘토스쿨관리', 'url': '/admin/service01/msch/'},
+                {'name': '멘토스쿨 설정', 'url': '/admin/service01/ms_apl'},
+             
+            ]
+        },        
         {
             'name': '회원',
             'sub_menus': [

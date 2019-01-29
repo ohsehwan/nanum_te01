@@ -15,7 +15,7 @@ ul li {
 }
 
 div.breadcrumbs, .module h2, .module caption, .inline-group h2 {
-    background: #00e19f;
+    /*background: #00e19f;*/
 }
 
 div.breadcrumbs{

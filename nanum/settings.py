@@ -21,8 +21,8 @@ STATICFILES_DIRS = (
 )
 STATIC_URL = '/static/'
 
-admin.site.site_title = '파이콘 한국 2017'
-admin.site.site_header = 'Back to the basic'
+admin.site.site_title = '부산대학교 나눔'
+admin.site.site_header = '부산대학교 나눔'
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
@@ -39,6 +39,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
+
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
@@ -48,6 +54,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'member',
     'post',
+    'service00',
+    'service01',
 ]
 
 MIDDLEWARE = [
@@ -60,27 +68,34 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'example.urls'
+ROOT_URLCONF = 'nanum.urls'
 
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, "templates")],
-        'APP_DIRS': True,
+        'APP_DIRS': False,
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'example.context_processors.gnb_apps',
-                'example.context_processors.gnb_menus',
+                'nanum.context_processors.gnb_apps',
+                'nanum.context_processors.gnb_menus',
             ],
+
+            'loaders': [
+                'django.template.loaders.filesystem.Loader',
+                'django.template.loaders.app_directories.Loader',
+                'admin_tools.template_loaders.Loader'
+            ],
+
         },
     },
 ]
 
-WSGI_APPLICATION = 'example.wsgi.application'
+WSGI_APPLICATION = 'nanum.wsgi.application'
 
 
 # Database
@@ -88,8 +103,12 @@ WSGI_APPLICATION = 'example.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'nanum', # DB명
+        'USER': 'nanum', # 데이터베이스 계정
+        'PASSWORD': 'nanum1234', # 계정 비밀번호
+        'HOST': '114.202.247.167', # 데이테베이스 주소(IP)
+        'PORT': '3306', # 데이터베이스 포트(보통은 3306)
     }
 }
 
